@@ -6,6 +6,7 @@ interface Book {
   rating: number;
   total_copies: number;
   available_copies: number;
+  isLoandedBook: Boolean;
   description: string;
   color: string;
   cover: string;
