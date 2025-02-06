@@ -30,6 +30,7 @@ interface Props<T extends FieldValues> {
   schema: ZodType<T>;
   defaultValues: T;
   onSubmit: (data: T) => Promise<{ success: boolean; error?: string }>;
+  type: "SIGN_IN" | "SIGN_UP";
 }
 
 const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit }: Props<T>) => {
@@ -67,7 +68,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
                     </FormLabel>
                     <FormControl>
                       {field.name === "universityCard" ? (
-                        <ImageUpload />
+                        <ImageUpload onFileChange={field.onChange} />
                       ) : (
                         <Input
                           required
@@ -77,7 +78,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
                         />
                       )}
                     </FormControl>
-                    <FormDescription>This is your public display name.</FormDescription>
+                    {/* <FormDescription>This is your public display name.</FormDescription> */}
                     <FormMessage />
                   </FormItem>
                 )}
@@ -98,7 +99,9 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
                 </FormItem>
               )}
             /> */}
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="form-btn">
+              {isSignIn ? "Sign In" : "Sign Up"}
+            </Button>
           </form>
         </Form>
 
