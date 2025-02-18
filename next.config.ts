@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         hostname: 'placehold.co',
       },
       {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
         protocol: 'https',
         hostname: 'm.media-amazon.com',
       },

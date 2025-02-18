@@ -15,13 +15,13 @@ interface Book {
   createdAt: Date | null;
 }
 
-// interface AuthCredentials {
-//   fullName: string;
-//   email: string;
-//   password: string;
-//   universityId: number;
-//   universityCard: string;
-// }
+interface AuthCredentials {
+  fullName: string;
+  email: string;
+  password: string;
+  universityId: number;
+  universityCard: string;
+}
 
 // interface BookParams {
 //   title: string;
