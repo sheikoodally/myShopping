@@ -18,7 +18,7 @@ export const sendEmail = async ({ email, subject, message } : { email: string; s
       provider: resend({ token: config.env.resend }),
     },
     body: {
-      from: "MyShopping <hello.sheikoodally.online>",
+      from: "MyShopping <contact@sheikoodally.online>",
       to: [email],
       subject: subject,
       html: message,
