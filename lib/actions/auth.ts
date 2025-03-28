@@ -60,6 +60,7 @@ export const signUp = async (params: AuthCredentials) => {
   const hashedPassword = await hash(password, 10);
 
   try{
+    //Add user to db
     await db.insert(users).values({
       fullName,
       email,
@@ -67,14 +68,14 @@ export const signUp = async (params: AuthCredentials) => {
       password: hashedPassword,
       universityCard,
     })
-
+    //send welcome email
     await workflowClient.trigger({
       url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
       body: {
         email, fullName,
       }
     })
-
+    //sign in user
     await signInWithCredentials({email, password})
 
     return {success: true};

@@ -47,7 +47,7 @@ export const { POST } = serve<InitialData>(async (context) => {
     await sendEmail({
       email,
       subject: "Welcome to the platform",
-      message: `Welcome ${fullName}!`,
+      message: `Welcome ${fullName}! quand to pu sous mo kok?`,
     });
   });
 

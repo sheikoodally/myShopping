@@ -11,7 +11,7 @@ export const workflowClient = new WorkflowClient({
 const qstashClient = new QstashClient({ token: config.env.upstash.qstashToken });
 
 export const sendEmail = async ({ email, subject, message } : { email: string; subject: string; message: string }) =>{
-
+  //send email
   await qstashClient.publishJSON({
     api: {
       name: "email",
