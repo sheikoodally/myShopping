@@ -134,7 +134,7 @@
     }
 
     .hex-input {
-        @apply h-full flex-1 bg-transparent font-ibm-plex-sans outline-none;
+        @apply h-full flex-1 bg-transparent outline-none;
     }
 
     .hex-color-picker {

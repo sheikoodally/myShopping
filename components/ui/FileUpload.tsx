@@ -36,12 +36,13 @@ interface Props {
   folder: string;
   variant: "dark" | "light";
   onFileChange: (filePath: string) => void;
+  value?: string;
 }
 
-const FileUpload = ({ type, accept, placeholder, folder, variant, onFileChange }: Props) => {
+const FileUpload = ({ type, accept, placeholder, folder, variant, onFileChange, value }: Props) => {
   const { toast } = useToast();
   const ikUploadRef = useRef(null);
-  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  const [file, setFile] = useState<{ filePath: string | null }>({ filePath: value ?? null });
   const [progress, setProgress] = useState(0);
 
   const styles = {
@@ -127,12 +128,12 @@ const FileUpload = ({ type, accept, placeholder, folder, variant, onFileChange }
           className="object-contain"
         />
         <p className={cn("text-base", styles.placeholder)}>{placeholder}</p>
-        {file && <p className={cn("upload-filename", styles.text)}>{file.filePath}</p>}
+        {file && <p className={cn("upload-filename", styles.text)}></p>}
 
         {file && <p className="upload-filename">{file.filePath}</p>}
       </button>
 
-      {progress > 0 && (
+      {progress > 0 && progress !== 100 && (
         <div className="w-full rounded bg-green-200">
           <div className="progress" style={{ width: `${progress}` }}>
             {progress}%
@@ -140,9 +141,18 @@ const FileUpload = ({ type, accept, placeholder, folder, variant, onFileChange }
         </div>
       )}
       {file && type === "image" ? (
-        <IKImage alt={file.filePath} path={file.filePath} width={500} height={300} />
+        <IKImage
+          alt={file?.filePath ? file?.filePath : ""}
+          path={file?.filePath ? file?.filePath : ""}
+          width={500}
+          height={300}
+        />
       ) : type === "video" ? (
-        <IKVideo path={file?.filePath} controls={true} className="h-96 w-full rounded" />
+        <IKVideo
+          path={file?.filePath ? file?.filePath : ""}
+          controls={true}
+          className="h-96 w-full rounded"
+        />
       ) : (
         ""
       )}
