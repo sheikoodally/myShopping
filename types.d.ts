@@ -1,15 +1,15 @@
 interface Book {
-  id: number;
+  id: string;
   title: string;
   author: string;
   genre: string;
   rating: number;
-  total_copies: number;
-  available_copies: number;
-  isLoandedBook: Boolean;
+  totalCopies: number;
+  availableCopies: number;
+  // isLoandedBook: Boolean;
   description: string;
-  color: string;
-  cover: string;
+  coverColor: string;
+  coverUrl: string;
   videoUrl: string;
   summary: string;
   createdAt: Date | null;
