@@ -30,7 +30,7 @@ const BookCover = ({
   coverColor = "#012E77",
   coverImage = "https://placehold.co/400x600.png",
 }: Props) => {
-  console.log(coverImage);
+  console.log(config.env.imagekit.urlEndpoint);
   return (
     <div className={cn("relative transition-all duration-300", varianceStyles[variant], className)}>
       <BookCoverSvg coverColor={coverColor} />
@@ -38,13 +38,20 @@ const BookCover = ({
         <IKImage
           path={coverImage}
           urlEndpoint={config.env.imagekit.urlEndpoint}
-          src={coverImage}
+          // src={coverImage}
           alt="book cover"
           fill
           className="rounded-sm object-fill"
           loading="lazy"
           lqip={{ active: true }}
         />
+        {/* <Image
+          src={`${config.env.imagekit.urlEndpoint}${coverImage}`}
+          alt="logo"
+          width={250}
+          height={250}
+          className="rounded-sm object-fill"
+        /> */}
       </div>
     </div>
   );
