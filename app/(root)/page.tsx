@@ -19,7 +19,7 @@ const Home = async () => {
   // console.log(JSON.stringify(result, null, 2));
   return (
     <div>
-      <BookOverview {...latestBooks[0]} userId={session?.user?.id as string} />
+      <BookOverview {...latestBooks[0]} />
       <BookList title="Latest Books" books={latestBooks.slice(1)} containerClassName="mt-28" />
     </div>
   );
