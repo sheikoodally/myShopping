@@ -6,7 +6,7 @@ interface Book {
   rating: number;
   totalCopies: number;
   availableCopies: number;
-  // isLoandedBook: Boolean;
+  isLoandedBook: Boolean;
   description: string;
   coverColor: string;
   coverUrl: string;
@@ -49,7 +49,7 @@ interface BookParams {
 //   summary: string;
 // }
 
-// interface BorrowBookParams {
-//   bookId: string;
-//   userId: string;
-// }
+interface BorrowBookParams {
+  bookId: string;
+  userId: string;
+}

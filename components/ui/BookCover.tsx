@@ -30,7 +30,6 @@ const BookCover = ({
   coverColor = "#012E77",
   coverImage = "https://placehold.co/400x600.png",
 }: Props) => {
-  console.log(config.env.imagekit.urlEndpoint);
   return (
     <div className={cn("relative transition-all duration-300", varianceStyles[variant], className)}>
       <BookCoverSvg coverColor={coverColor} />

@@ -27,12 +27,10 @@ const uploadToImageKit = async (url:string, fileName: string, folder:string) => 
 
     return response.filePath;
   } catch (error) {
-    console.error("error uploading image to imagekit:", error)
   }
 }
 
 const seed = async () => {
-  console.log('seeding data');
   try {
     for (const book of dummyBooks) {
 

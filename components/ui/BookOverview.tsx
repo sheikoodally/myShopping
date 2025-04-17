@@ -2,6 +2,11 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "./button";
 import BookCover from "./BookCover";
+import BorrowBook from "../BorrowBook";
+
+interface Props extends Book {
+  userId: string;
+}
 
 const BookOverview = ({
   title,
@@ -14,7 +19,10 @@ const BookOverview = ({
   coverColor,
   coverUrl,
   videoUrl,
+  id,
+  userId,
 }: Book) => {
+  console.log(coverUrl);
   return (
     <section className="book-overview">
       <div className="flex flex-1 flex-col gap-5">
@@ -47,10 +55,7 @@ const BookOverview = ({
 
         <p className="book-description">{description}</p>
 
-        <Button className="book-overview_btn">
-          <Image src="/icons/book.svg" alt="book" width={20} height={20} />
-          <p className="text-xl">Borrow</p>
-        </Button>
+        <BorrowBook bookId={id} userId={userId} />
       </div>
 
       <div className="relative flex flex-1 justify-start">
