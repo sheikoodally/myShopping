@@ -223,6 +223,16 @@
   .select-item {
     @apply focus:bg-dark-600 focus:text-light-100 !important;
   }
+
+  .admin-table-header > *{
+    background-color: #F8F8FF;
+    /* padding: 10px !important; */
+    @apply py-[15px] !important;
+  }
+
+  .users-table-row > *{
+    @apply py-[15px] !important;
+  }
 }
 
 @layer utilities {

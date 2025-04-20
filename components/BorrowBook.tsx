@@ -31,10 +31,6 @@ const BorrowBook = ({ userId, bookId, borrowingEligibility: { isEligible, messag
     try {
       const result = await borrowBook({ bookId, userId });
 
-      console.log(result);
-
-      console.log("am i here?");
-
       if (result.success) {
         toast({
           title: "Success",
