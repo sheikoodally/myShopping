@@ -24,7 +24,7 @@ const BookOverview = async ({
   videoUrl,
   id,
   userId,
-}: Book) => {
+}: Props) => {
   const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
 
   const borrowingEligibility = {
@@ -32,7 +32,7 @@ const BookOverview = async ({
     message:
       availableCopies <= 0 ? "book is not available" : "you are not eligible to borrow this book",
   };
-  console.log(user);
+
   return (
     <section className="book-overview">
       <div className="flex flex-1 flex-col gap-5">

@@ -28,11 +28,12 @@ const BorrowBook = ({ userId, bookId, borrowingEligibility: { isEligible, messag
       });
     }
     setBorrowing(true);
-
     try {
       const result = await borrowBook({ bookId, userId });
 
       console.log(result);
+
+      console.log("am i here?");
 
       if (result.success) {
         toast({
@@ -44,7 +45,7 @@ const BorrowBook = ({ userId, bookId, borrowingEligibility: { isEligible, messag
       } else {
         toast({
           title: "Error",
-          description: "An error occured while borrowing the book",
+          description: "An error occured while borrowing the book 1",
         });
       }
     } catch (error) {

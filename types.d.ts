@@ -6,7 +6,7 @@ interface Book {
   rating: number;
   totalCopies: number;
   availableCopies: number;
-  isLoandedBook: Boolean;
+  // isLoandedBook: Boolean;
   description: string;
   coverColor: string;
   coverUrl: string;
