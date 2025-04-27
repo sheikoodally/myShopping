@@ -56,10 +56,8 @@ export const changeRole = async ({ userId, selectedOption }: { userId: string, s
     console.log('you cannot change your own role')
   }
 
-  const userData = await db.update(users)
-  .set({ role: selectedOption })
-  .where(eq(users.id, userId));
-  return ({success: true, data: userData});
+  await db.update(users).set({ role: selectedOption }).where(eq(users.id, userId));
   
+  return ({success: true});
 }
 

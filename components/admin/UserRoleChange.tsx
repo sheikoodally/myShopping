@@ -11,6 +11,7 @@ import {
 import { Button } from "../ui/button";
 import { changeRole } from "@/lib/admin/users/users";
 import { redirect } from "next/navigation";
+import { toast } from "@/hooks/use-toast";
 
 const UserRoleChange = ({
   role,
@@ -22,7 +23,7 @@ const UserRoleChange = ({
   adminId: string;
 }) => {
   console.log(role);
-  const [selectedOption, setSelectedOption] = useState<{ role: "ADMIN" | "USER" }>(role);
+  const [selectedOption, setSelectedOption] = useState(role);
   const [btnDisabled, setBtnDisabled] = useState(false);
 
   useEffect(() => {
@@ -34,9 +35,9 @@ const UserRoleChange = ({
   return (
     <div className="flex gap-5">
       <Select
-        value={selectedOption as any}
+        value={selectedOption}
         onValueChange={(value) => {
-          setSelectedOption(value as any);
+          setSelectedOption(value);
         }}
       >
         <SelectTrigger className="w-[125px] text-foreground">
@@ -54,7 +55,19 @@ const UserRoleChange = ({
         onClick={async () => {
           const data = await changeRole({ userId, selectedOption });
           if (data?.success) {
-            redirect("/admin/users");
+            if (data.success) {
+              toast({
+                title: "Success",
+                description: "Role changed successfully",
+              });
+              redirect("/admin/users");
+            } else {
+              toast({
+                title: "Error",
+                description: "An error occured while trying to change role",
+                variant: "destructive",
+              });
+            }
           }
         }}
       >
