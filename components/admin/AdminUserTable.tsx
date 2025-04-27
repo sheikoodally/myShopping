@@ -19,7 +19,6 @@ import { eq } from "drizzle-orm";
 
 const AdminUserTable = async () => {
   const session = await auth();
-  console.log(session);
   if (!session?.user?.id) {
     redirect("/sign-in");
   }
@@ -31,15 +30,13 @@ const AdminUserTable = async () => {
     .limit(1)
     .then((res) => res[0].isAdmin === "ADMIN");
 
-  console.log(isAdmin);
-
   if (!isAdmin) redirect("/");
 
   const userData = await db.select().from(users).limit(50);
 
   return (
     <>
-      <ViewUsersTable userData={userData} />
+      <ViewUsersTable userData={userData} adminId={session?.user?.id} />
       <Pagination>
         <PaginationContent>
           <PaginationItem>

@@ -9,9 +9,18 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import AdminUserDialogue from "./AdminUserDialogue";
+import { SelectGroup } from "@radix-ui/react-select";
+import UserRoleChange from "./UserRoleChange";
 
-const ViewUsersTable = ({ userData }: { userData: any }) => {
+const ViewUsersTable = ({ userData, adminId }: { userData: any; adminId: string }) => {
   return (
     <div>
       <Table>
@@ -36,7 +45,13 @@ const ViewUsersTable = ({ userData }: { userData: any }) => {
                 <TableCell className="font-medium">
                   {user?.createdAt?.toLocaleDateString()}
                 </TableCell>
-                <TableCell className="font-medium">{user?.role}</TableCell>
+                <TableCell className="font-medium">
+                  <UserRoleChange
+                    role={user?.role as "USER" | "ADMIN"}
+                    userId={user?.id}
+                    adminId={adminId}
+                  />
+                </TableCell>
                 <TableCell className="font-medium">Get books borrowed</TableCell>
                 <TableCell className="font-medium">{user?.universityId}</TableCell>
                 <TableCell className="cursor-pointer">

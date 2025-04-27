@@ -34,3 +34,32 @@ export const viewUser = async () => {
   return ({success: true, data: userData});
 }
 
+export const changeRole = async ({ userId, selectedOption }: { userId: string, selectedOption: "ADMIN" | "USER" }) => {
+  
+  console.log(selectedOption)
+
+  const session = await auth();
+  if (!session?.user?.id) {
+    redirect("/sign-in");
+  }
+
+  const isAdmin = await db
+    .select({ isAdmin: users.role })
+    .from(users)
+    .where(eq(users?.id, session?.user?.id))
+    .limit(1)
+    .then((res) => res[0].isAdmin === "ADMIN");
+
+  if (!isAdmin) redirect("/");
+
+  if (session?.user?.id === userId) { 
+    console.log('you cannot change your own role')
+  }
+
+  const userData = await db.update(users)
+  .set({ role: selectedOption })
+  .where(eq(users.id, userId));
+  return ({success: true, data: userData});
+  
+}
+
