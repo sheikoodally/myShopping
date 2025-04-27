@@ -3,7 +3,7 @@ import { adminSideBarLinks } from "@/constants";
 import { cn, getInitials } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import React from "react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Session } from "next-auth";
@@ -13,7 +13,7 @@ const Sidebar = ({ session }: { session: Session }) => {
   return (
     <div className="admin-sidebar">
       <div>
-        <div className="logo">
+        <div className="logo" onClick={() => redirect("/")}>
           <Image src="/icons/admin/logo.svg" alt="logo" height={37} width={37} />
           <h1>BookWise</h1>
         </div>

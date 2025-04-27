@@ -1,3 +1,4 @@
+'use server'
 import { signIn } from "@/auth";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";

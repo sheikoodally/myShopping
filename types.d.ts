@@ -36,6 +36,19 @@ interface BookParams {
   summary: string;
 }
 
+interface User { 
+  id: string;
+  fullName: string;
+  email: string;
+  universityId: number;
+  password: string;
+  universityCard: string;
+  status: string | null;
+  role: string;
+  lastActivityDate: Date;
+  createdAt: Date;
+}
+
 // interface BookParams {
 //   title: string;
 //   author: string;

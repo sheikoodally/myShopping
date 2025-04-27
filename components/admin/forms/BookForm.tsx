@@ -53,7 +53,6 @@ const BookForm = ({ type }: Props) => {
     console.log(values);
     const result = await createBook(values);
     if (result.success) {
-      console.log("im in success");
       toast({
         title: "Success",
         description: "Book created successfully",

@@ -11,15 +11,24 @@ import {
 } from "@/components/ui/dialog";
 import DeleteSVG from "../svg/DeleteSVG1";
 import { Button } from "../ui/button";
+import { deleteUser } from "@/lib/admin/users/users";
+import { redirect } from "next/navigation";
 
 interface Props {
   userId: string;
-  closeModal: boolean;
-  deleteUser: any;
 }
 
-const AdminUserDialogue = ({ userId, deleteUser, closeModal }: Props) => {
+const AdminUserDialogue = ({ userId }: Props) => {
   const [open, setOpen] = useState(false);
+
+  const deleteUserAction = async (userId: string) => {
+    const isUserDeleted = await deleteUser({ userId });
+    if (isUserDeleted?.success) {
+      setOpen(false);
+      redirect("/admin/users");
+    }
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
@@ -37,7 +46,7 @@ const AdminUserDialogue = ({ userId, deleteUser, closeModal }: Props) => {
             <div className="flex justify-end">
               <Button
                 onClick={() => {
-                  deleteUser(userId);
+                  deleteUserAction(userId);
                 }}
               >
                 Delete
