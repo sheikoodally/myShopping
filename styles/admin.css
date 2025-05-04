@@ -201,4 +201,8 @@
     .user-card .email {
         @apply text-light-500 text-sm line-clamp-1 break-words w-full;
     }
+
+    .top-grid {
+        @apply bg-white rounded-md p-7;
+    }
 }

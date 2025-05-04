@@ -22,13 +22,12 @@ const UserRoleChange = ({
   userId: string;
   adminId: string;
 }) => {
-  console.log(role);
   const [selectedOption, setSelectedOption] = useState(role);
-  const [btnDisabled, setBtnDisabled] = useState(false);
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
-    if (userId === adminId) {
-      setBtnDisabled(true);
+    if (userId !== adminId) {
+      setBtnDisabled(false);
     }
   }, []);
 

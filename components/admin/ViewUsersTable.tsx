@@ -19,6 +19,8 @@ import {
 import AdminUserDialogue from "./AdminUserDialogue";
 import { SelectGroup } from "@radix-ui/react-select";
 import UserRoleChange from "./UserRoleChange";
+import { getBorrowedBooks } from "@/lib/admin/users/users";
+import BooksBorrowed from "./forms/BooksBorrowed";
 
 const ViewUsersTable = ({ userData, adminId }: { userData: any; adminId: string }) => {
   return (
@@ -52,7 +54,9 @@ const ViewUsersTable = ({ userData, adminId }: { userData: any; adminId: string 
                     adminId={adminId}
                   />
                 </TableCell>
-                <TableCell className="font-medium">Get books borrowed</TableCell>
+                <TableCell className="font-medium">
+                  <BooksBorrowed userId={user?.id} />
+                </TableCell>
                 <TableCell className="font-medium">{user?.universityId}</TableCell>
                 <TableCell className="cursor-pointer">
                   <AdminUserDialogue
