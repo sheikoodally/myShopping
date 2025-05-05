@@ -15,6 +15,13 @@
       "when": 1744925677703,
       "tag": "0001_regular_whiplash",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1746476121927,
+      "tag": "0002_fluffy_dust",
+      "breakpoints": true
     }
   ]
 }
