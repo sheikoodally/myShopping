@@ -157,3 +157,14 @@ export const getTopGridAdminHome = async () => {
 
 }
 
+export const checkAdmin = async (userIDSession: string | any) => {
+  
+  const checkUser = await db.select({ isAdmin: users.role }).from(users).where(eq(users.id, userIDSession)).limit(1)
+  
+  if (checkUser[0].isAdmin === "ADMIN") {
+    return ({ success: true })
+  } else { 
+    return ({ success: false })
+  }
+}
+
